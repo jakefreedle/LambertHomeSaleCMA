@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Analysis — 41563 Thunderhill Road, Parker</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Georgia, serif; background: #f5f3ef; color: #2c2c2c; line-height: 1.7; }
+        .container { max-width: 980px; margin: 0 auto; background: white; box-shadow: 0 4px 40px rgba(0,0,0,0.09); }
+
+        /* HEADER */
+        .header { background: linear-gradient(135deg, #3057A7 0%, #5EA1C3 100%); color: white; padding: 60px 55px 45px; position: relative; overflow: hidden; }
+        .header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; background: rgba(255,255,255,0.05); border-radius: 50%; }
+        .header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #FFD372, #85714D, #FFD372); }
+        .header-content { position: relative; z-index: 1; }
+        .header-eyebrow { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #FFD372; margin-bottom: 16px; }
+        .header h1 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; line-height: 1.2; }
+        .header-agents { margin-top: 20px; display: flex; gap: 35px; flex-wrap: wrap; }
+        .header-agent-role { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #FFD372; margin-bottom: 3px; }
+        .header-agent-name { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; font-weight: 700; color: white; margin-bottom: 2px; }
+        .header-agent-contact { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; color: rgba(255,255,255,0.65); }
+        .header-tagline { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 18px; font-style: italic; }
+
+        /* STATS BAR */
+        .stats-bar { background: #3057A7; padding: 22px 55px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px; border-bottom: 3px solid #FFD372; }
+        .stat { text-align: center; }
+        .stat-value { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 16px; font-weight: 800; color: #FFD372; line-height: 1; margin-bottom: 4px; }
+        .stat-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: rgba(255,255,255,0.55); }
+
+        /* SECTIONS */
+        .section { padding: 48px 55px; border-bottom: 1px solid #ede9e2; }
+        .section-alt { background: #faf8f4; }
+        .section-eyebrow { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: #5EA1C3; margin-bottom: 10px; }
+        .section h2 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 25px; font-weight: 700; color: #3057A7; margin-bottom: 20px; line-height: 1.3; }
+        .prose { font-size: 16px; color: #575B5C; line-height: 1.85; margin-bottom: 18px; }
+        .prose:last-child { margin-bottom: 0; }
+        .prose strong { color: #3057A7; font-weight: 700; }
+
+        /* BOXES */
+        .good-box { background: #f0f7fb; border-left: 4px solid #5EA1C3; border-radius: 0 8px 8px 0; padding: 22px 26px; margin: 22px 0; }
+        .good-box h4 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #3057A7; margin-bottom: 10px; }
+        .good-box p { font-size: 15px; color: #575B5C; line-height: 1.8; margin-bottom: 8px; }
+        .good-box p:last-child { margin-bottom: 0; }
+        .good-box p strong { color: #3057A7; }
+        .warn-box { background: #fffbf0; border-left: 4px solid #FFD372; border-radius: 0 8px 8px 0; padding: 22px 26px; margin: 22px 0; }
+        .warn-box h4 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #85714D; margin-bottom: 10px; }
+        .warn-box p { font-size: 15px; color: #575B5C; line-height: 1.8; margin-bottom: 8px; }
+        .warn-box p:last-child { margin-bottom: 0; }
+        .warn-box p strong { color: #85714D; }
+        .pull-quote { border-left: 4px solid #5EA1C3; padding: 18px 26px; background: #f0f7fb; border-radius: 0 8px 8px 0; margin: 24px 0; }
+        .pull-quote p { font-size: 17px; font-style: italic; color: #3057A7; line-height: 1.75; }
+
+        /* NEIGHBOR BOX */
+        .neighbor-box { background: linear-gradient(135deg, #3057A7 0%, #5EA1C3 100%); border-radius: 14px; padding: 30px 35px; margin: 25px 0; color: white; }
+        .neighbor-box-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #FFD372; margin-bottom: 8px; }
+        .neighbor-box h4 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-weight: 700; color: white; margin-bottom: 18px; }
+        .neighbor-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 14px 0; }
+        .neighbor-stat { background: rgba(255,255,255,0.15); border-radius: 8px; padding: 12px 14px; text-align: center; }
+        .neighbor-stat-value { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-weight: 800; color: #FFD372; margin-bottom: 3px; }
+        .neighbor-stat-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 10px; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.5px; }
+        .neighbor-box p { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.75; margin-top: 14px; }
+
+        /* COMP TABLE */
+        @page { size: letter; margin: 0.45in 0.35in; }
+
+        .comp-table { width: 100%; border-collapse: collapse; margin: 22px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; border-radius: 10px; overflow: hidden; border: 1px solid #ddd8ce; }
+        .comp-table colgroup col { }
+        .comp-table thead { background: #3057A7; }
+        .comp-table th { padding: 10px 8px; text-align: left; font-weight: 700; color: #FFD372; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.4px; }
+
+        /* Fixed widths — status and price cols wide enough to never collide */
+        .col-addr   { width: 15%; }
+        .col-status { width: 12%; }
+        .col-orig   { width: 7%; }
+        .col-price  { width: 7%; }
+        .col-bd     { width: 5%; }
+        .col-tsf    { width: 6%; }
+        .col-asf    { width: 6%; }
+        .col-ac     { width: 5%; }
+        .col-dom    { width: 4%; }
+        .col-notes  { width: 33%; }
+
+        .comp-table td { padding: 10px 8px; border-bottom: 1px solid #ede9e2; color: #575B5C; vertical-align: top; word-wrap: break-word; overflow-wrap: break-word; font-size: 11.5px; }
+        .comp-table tr:last-child td { border-bottom: none; }
+        .comp-table tr.subject-row { background: #eef6fb; }
+        .comp-table tr.subject-row td { color: #3057A7; font-weight: 600; }
+        .comp-table tr.sold-row { background: #fafaf6; }
+        .comp-table tr.key-row { background: #fffbf0; }
+        .comp-table tr.watch-row { background: #f5f0fb; }
+        .comp-table tr:nth-child(even):not(.subject-row):not(.sold-row):not(.key-row):not(.watch-row) { background: #fcfaf7; }
+
+        /* Pills — fixed display, no wrapping, contained within their cell */
+        .pill { display: inline-block; padding: 3px 7px; border-radius: 20px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2px; white-space: nowrap; line-height: 1.4; }
+        .pill-subject { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+        .pill-sold    { background: #d1fae5; color: #065f46; }
+        .pill-pending { background: #fef3c7; color: #92400e; }
+        .pill-coming  { background: #f3e8ff; color: #6b21a8; }
+        .pill-key     { background: #fde68a; color: #78350f; }
+        .pill-watch   { background: #ede9fe; color: #5b21b6; }
+
+        /* Price cell — never wraps */
+        .price-cell { white-space: nowrap; font-weight: 600; color: #2c2c2c; }
+
+        .zillow-link { color: #3057A7; text-decoration: none; font-size: 10px; font-weight: 600; display: block; margin-top: 3px; }
+
+        /* VALUATION BOX */
+        .val-box { background: linear-gradient(135deg, #3057A7 0%, #5EA1C3 100%); border-radius: 16px; padding: 38px 42px; margin: 28px 0; color: white; text-align: center; }
+        .val-box-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #FFD372; margin-bottom: 10px; }
+        .val-tiers { display: flex; justify-content: center; gap: 16px; margin: 20px 0; flex-wrap: wrap; }
+        .val-tier { border-radius: 12px; padding: 22px 24px; flex: 1; min-width: 150px; max-width: 200px; text-align: center; }
+        .val-tier.low    { background: rgba(255,255,255,0.10); border: 2px solid rgba(255,255,255,0.25); }
+        .val-tier.target { background: rgba(255,211,114,0.20); border: 2px solid #FFD372; }
+        .val-tier.high   { background: rgba(255,255,255,0.10); border: 2px solid rgba(255,255,255,0.25); }
+        .val-tier-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .val-tier.low .val-tier-label    { color: rgba(255,255,255,0.6); }
+        .val-tier.target .val-tier-label { color: #FFD372; }
+        .val-tier.high .val-tier-label   { color: rgba(255,255,255,0.6); }
+        .val-tier-price { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 28px; font-weight: 900; color: white; margin-bottom: 6px; line-height: 1; }
+        .val-tier-desc  { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+        .val-note { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 16px; line-height: 1.65; }
+
+        /* STRATEGY LIST */
+        .strategy-list { margin: 20px 0; }
+        .strategy-item { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid #ede9e2; }
+        .strategy-item:last-child { border-bottom: none; }
+        .strategy-num { width: 34px; height: 34px; background: #3057A7; color: #FFD372; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; font-weight: 800; flex-shrink: 0; margin-top: 2px; }
+        .strategy-content h4 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; font-weight: 700; color: #3057A7; margin-bottom: 6px; }
+        .strategy-content p { font-size: 15px; color: #575B5C; line-height: 1.75; }
+
+        /* FOOTER */
+        .footer { background: linear-gradient(135deg, #3057A7 0%, #5EA1C3 100%); color: white; padding: 45px 55px; text-align: center; }
+        .footer h3 { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+        .footer p { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 10px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .footer-agents { margin-top: 28px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.2); display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; }
+        .footer-agent { text-align: center; }
+        .footer-agent-role { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #FFD372; margin-bottom: 4px; }
+        .footer-agent-name { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 16px; font-weight: 800; color: white; margin-bottom: 4px; }
+        .footer-agent-contact { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+        .footer-tagline { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; color: rgba(255,255,255,0.35); font-style: italic; margin-top: 22px; }
+
+        /* PRINT */
+        @media print {
+            .container { box-shadow: none; max-width: 100%; }
+            a { color: #3057A7 !important; }
+            .section { padding: 26px 26px; }
+            .header { padding: 32px 26px 22px; }
+            .stats-bar { padding: 14px 26px; }
+            .footer { padding: 22px 26px; }
+            .comp-table { font-size: 8px; table-layout: fixed; width: 100%; }
+            .comp-table th { padding: 5px 5px; font-size: 7.5px; }
+            .comp-table td { padding: 5px 5px; font-size: 8px; word-wrap: break-word; overflow-wrap: break-word; }
+            .pill { font-size: 7px; padding: 2px 4px; }
+            .zillow-link { font-size: 7.5px; }
+            .val-box { padding: 20px 24px; }
+            .val-tier-price { font-size: 20px; }
+            .val-tiers { gap: 10px; }
+            .val-tier { padding: 14px 14px; }
+            .neighbor-grid { grid-template-columns: repeat(4,1fr); }
+            .footer-agents { gap: 30px; }
+        }
+
+        @media (max-width: 700px) {
+            .section { padding: 35px 24px; }
+            .header { padding: 40px 24px 32px; }
+            .stats-bar { grid-template-columns: repeat(3,1fr); padding: 18px 24px; }
+            .footer { padding: 35px 24px; }
+            .val-tiers { flex-direction: column; align-items: center; }
+            .val-tier { max-width: 100%; width: 100%; }
+            .neighbor-grid { grid-template-columns: repeat(2,1fr); }
+            .footer-agents { flex-direction: column; gap: 24px; }
+            .header-agents { flex-direction: column; gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div class="header-eyebrow">Comparative Market Analysis</div>
+            <h1>41563 Thunderhill Road<br>Parker, CO 80138</h1>
+            <div class="header-agents">
+                <div class="header-agent">
+                    <div class="header-agent-role">The Freedle Team</div>
+                    <div class="header-agent-name">Scott Freedle</div>
+                    <div class="header-agent-contact">720-207-1318 &nbsp;·&nbsp; scott@gofreedle.com &nbsp;·&nbsp; gofreedle.com</div>
+                </div>
+            </div>
+            <div class="header-tagline">Freedle and Associates &nbsp;·&nbsp; Helping You Find Your Place. &nbsp;·&nbsp; May 2026 &nbsp;·&nbsp; Confidential</div>
+        </div>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="stats-bar">
+        <div class="stat"><div class="stat-value">3,294 SF</div><div class="stat-label">Total SF</div></div>
+        <div class="stat"><div class="stat-value">1,647 SF</div><div class="stat-label">Above Grade</div></div>
+        <div class="stat"><div class="stat-value">4 / 3</div><div class="stat-label">Bed / Bath</div></div>
+        <div class="stat"><div class="stat-value">3.37 ac</div><div class="stat-label">Lot Size</div></div>
+        <div class="stat"><div class="stat-value">2-Stall</div><div class="stat-label">Barn</div></div>
+        <div class="stat"><div class="stat-value">No HOA</div><div class="stat-label">Association</div></div>
+    </div>
+
+    <!-- Property overview -->
+    <div class="section">
+        <div class="section-eyebrow">Your Property in Context</div>
+        <h2>A Solid Acreage Property in a Competitive Submarket</h2>
+
+        <p class="prose">The Parker acreage market in this price band is active and well-supplied with quality horse properties right now. Before we talk numbers, it is worth being honest about where your property fits in the field — what it competes well on, and where buyers will apply a discount.</p>
+
+        <div class="good-box">
+            <h4>What Works in Your Favor</h4>
+            <p><strong>Natural light and open layout</strong> — The vaulted great room with skylights creates a genuinely bright, spacious feel that photographs well and shows exceptionally well. This is a home that breathes, and buyers respond to it immediately. It punches above the square footage on paper.</p>
+            <p><strong>Hardwood and quality laminate flooring</strong> — Wood floors on the main level and quality laminate in the family room give the home a warm, finished feel throughout. This is a meaningful differentiator from competing properties still working with dated carpet.</p>
+            <p><strong>Smart bedroom layout</strong> — Three bedrooms share the same level, with a sizable primary suite featuring a large walk-in closet positioned away from the secondary bedrooms. That separation is something families specifically look for and rarely find in this floor plan type.</p>
+            <p><strong>Walkout basement</strong> — The finished walkout adds real flexibility and usable square footage. It functions as a true second living area, not just storage, and the natural light from the walkout makes a meaningful difference in how it feels versus a standard below-grade basement.</p>
+            <p><strong>Mountain views</strong> — East-facing front range views add meaningful appeal and are marketable. They will not single-handedly move the price ceiling, but they move buyers emotionally during showings, and that matters.</p>
+            <p><strong>Horse-ready amenities</strong> — 2-stall barn with tack room and loafing shed, RA-2 zoning, fenced acreage. The property is set up for horses and delivers the lifestyle buyers in this market are seeking.</p>
+            <p><strong>No HOA</strong> — In a market where many competing properties carry association fees, this is a tangible financial advantage for buyers who want flexibility and lower carrying costs.</p>
+        </div>
+
+        <div class="warn-box">
+            <h4>Where Buyers Will Apply a Discount</h4>
+            <p><strong>Above-grade SF is the number that hurts most.</strong> At 1,647 SF above grade, you are meaningfully smaller than most of the active competition. Many comps offer 1,700 to 2,400 SF above grade. Buyers who have toured the neighborhood will feel the difference, even if the finished walkout basement brings total finished SF to a competitive 3,211.</p>
+            <p><strong>Kitchen and bathrooms are in line with the neighborhood average</strong> — but the properties achieving the highest prices in this comp set have fully updated kitchens and bathrooms. Buyers comparison-shopping will notice the gap between this property and the fully refreshed listings and factor it into their offer.</p>
+            <p><strong>The barn is a plus, but buyers at this price point expect more.</strong> The 2-stall setup is genuinely horse-ready and functional. However, the properties commanding top prices in this neighborhood tend to have a more substantial barn or dedicated workshop space. For many buyers in this range, more barn or a real workshop is on their wish list — and this property does not fully satisfy that. The barn checks the horse box without delivering the working infrastructure that premium buyers are hunting for.</p>
+            <p><strong>The northern property line is a real concern.</strong> The adjacent property to the north presents a significant visual challenge. It reads more like a storage yard than a rural neighbor, and buyers touring the property will see it. In an acreage market where privacy and open space are core to the value proposition, this is a discount factor that is difficult to price around entirely. It will give some buyers pause and narrows the buyer pool to those willing to look past it or screen for it with landscaping over time.</p>
+            <p><strong>3.37 acres is solid, but not exceptional in this peer group.</strong> Several of the top-priced comps offer more acreage and more separation from neighbors. In a market where land means privacy, a little more distance goes a long way.</p>
+        </div>
+    </div>
+
+    <!-- Neighbor comp -->
+    <div class="section section-alt">
+        <div class="section-eyebrow">The Comp That Matters Most</div>
+        <h2>Your Neighbor on Thunderhill Road Sets the Ceiling</h2>
+
+        <p class="prose">The single most important data point in this analysis is the property directly on your street. It closed recently and is top of mind for any buyer who has been shopping this area. The honest assessment: those buyers got a great deal. That sale is our anchor, and it defines the upper boundary of what this immediate market will support.</p>
+
+        <div class="neighbor-box">
+            <div class="neighbor-box-label">Closed Comparable — Same Street</div>
+            <h4>42226 Thunderhill Road &nbsp;·&nbsp; Closed February 2026</h4>
+            <div class="neighbor-grid">
+                <div class="neighbor-stat"><div class="neighbor-stat-value">$849,000</div><div class="neighbor-stat-label">Close Price</div></div>
+                <div class="neighbor-stat"><div class="neighbor-stat-value">5 / 4</div><div class="neighbor-stat-label">Bed / Bath</div></div>
+                <div class="neighbor-stat"><div class="neighbor-stat-value">3,883 SF</div><div class="neighbor-stat-label">Total SF</div></div>
+                <div class="neighbor-stat"><div class="neighbor-stat-value">3.89 ac</div><div class="neighbor-stat-label">Lot Size</div></div>
+            </div>
+            <p>This property closed in 3 days at $849,000. It offered 5 beds, 4 baths, 2,383 SF above grade versus your 1,647, a 5-stall pole barn of approximately 2,000 SF, and nearly 4 acres. Those buyers got a strong value on a genuinely bigger property. That makes it our ceiling reference, not our target. Your pricing needs to reflect the meaningful differences in size, barn, and bedroom count while still benefiting from the neighborhood credibility that sale established.</p>
+        </div>
+
+        <div class="pull-quote">
+            <p>"The Thunderhill neighbor tells us the market will pay for the right property in this area. Your job is to be the most compelling value below that ceiling — not to compete dollar for dollar, but to give buyers a clear reason to choose you."</p>
+        </div>
+    </div>
+
+    <!-- Comp table -->
+    <div class="section">
+        <div class="section-eyebrow">Full Comparable Market Analysis</div>
+        <h2>Every Relevant Sale and Listing in Your Market</h2>
+
+        <p class="prose">The table below covers the full competitive landscape. Pay attention to the homes that moved fastest and the ones that sat the longest — the pattern is consistent throughout this data set.</p>
+
+        <p class="prose">One note on context: looking at this comp set produces some whiplash. The lower-priced sales at Vista Ridge, Stockholm, and Eileen Way are clearly not in the same league as this property. But the gap between those and the $849k Thunderhill sale is exactly the tension this pricing analysis has to navigate. You are meaningfully nicer than the bottom of this set, and you sit below the ceiling set by the neighbor. The question is precisely where in that range you belong — and the pre-list steps below are what push you toward the top of it.</p>
+
+        <table class="comp-table">
+            <colgroup>
+                <col class="col-addr">
+                <col class="col-status">
+                <col class="col-orig">
+                <col class="col-price">
+                <col class="col-bd">
+                <col class="col-tsf">
+                <col class="col-asf">
+                <col class="col-ac">
+                <col class="col-dom">
+                <col class="col-notes">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Address</th>
+                    <th>Status</th>
+                    <th>Orig List</th>
+                    <th>Price</th>
+                    <th>Bd/Ba</th>
+                    <th>Tot SF</th>
+                    <th>Abv SF</th>
+                    <th>Acres</th>
+                    <th>DOM</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="subject-row">
+                    <td>
+                        <strong>41563 Thunderhill Rd</strong><br>
+                        <span style="font-size:10px;color:#3057A7;font-weight:700;">YOUR PROPERTY</span>
+                    </td>
+                    <td><span class="pill pill-subject">Subject</span></td>
+                    <td class="price-cell">TBD</td>
+                    <td class="price-cell">TBD</td>
+                    <td>4 / 3</td>
+                    <td>3,294</td>
+                    <td>1,647</td>
+                    <td>3.37</td>
+                    <td>—</td>
+                    <td style="font-size:10.5px;">Ranch w/ walkout. 2-stall barn, tack room, loafing shed. Mountain views. Natural light, open layout, wood/laminate floors. Primary suite away from secondary beds. North neighbor is a concern.</td>
+                </tr>
+                <tr class="key-row">
+                    <td>
+                        <strong>42226 Thunderhill Rd</strong><br>
+                        <a href="https://www.zillow.com/homedetails/42226-Thunder-Hill-Rd-Parker-CO-80138/13524854_zpid/" class="zillow-link" target="_blank">View on Zillow</a>
+                    </td>
+                    <td><span class="pill pill-key">Ceiling</span></td>
+                    <td class="price-cell">$849,000</td>
+                    <td class="price-cell">$849,000</td>
+                    <td>5 / 4</td>
+                    <td>3,883</td>
+                    <td>2,383</td>
+                    <td>3.89</td>
+                    <td>3</td>
+                    <td style="font-size:10.5px;"><strong>Same street. Those buyers got a great deal.</strong> 5 beds, 4 baths, 2,383 SF above grade, 5-stall 2,000 SF pole barn. Sold in 3 days. Defines the top of this market and anchors our entire analysis.</td>
+                </tr>
+                <tr class="watch-row">
+                    <td>
+                        1740 Territory Circle<br>
+                        <a href="https://www.zillow.com/homedetails/1740-Territory-Cir-Parker-CO-80138/13524831_zpid/" class="zillow-link" target="_blank">View on Zillow</a>
+                    </td>
+                    <td><span class="pill pill-coming">Coming Soon</span></td>
+                    <td class="price-cell">$924,000</td>
+                    <td class="price-cell">$924,000</td>
+                    <td>4 / 3</td>
+                    <td>3,650</td>
+                    <td>2,035</td>
+                    <td>2.73</td>
+                    <td>0</td>
+                    <td style="font-size:10.5px;"><strong>Watch this one closely.</strong> If it closes near ask, your positioning at $815k looks exceptional by comparison — more land, similar amenities, significantly better value. Smaller lot than yours but more SF above grade and more updated. How it performs will be a real-time signal for this submarket.</td>
+                </tr>
+                <tr>
+                    <td>
+                        1793 Prairie Owl Rd<br>
+                        <a href="https://www.zillow.com/homedetails/1793-Prairie-Owl-Rd-Parker-CO-80138/13525501_zpid/" class="zillow-link" target="_blank">View on Zillow</a>
+                    </td>
+                    <td><span class="pill pill-pending">Pending</span></td>
+                    <td class="price-cell">$950,000</td>
+                    <td class="price-cell">$950,000</td>
+                    <td>5 / 3</td>
+                    <td>3,069</td>
+                    <td>1,545</td>
+                    <td>5.09</td>
+                    <td>17</td>
+                    <td style="font-size:10.5px;">5 acres, massive 1,200 SF shop with 14ft ceilings and RV hookup — the shop is doing almost all the work at $950k. Updated kitchen with granite, composite deck. Pending in 17 days. Without the shop, this property is not at this price.</td>
+                </tr>
+                <tr class="sold-row">
+                    <td>
+                        42865 Vista Ridge<br>
+                        <a href="https://www.zillow.com/homedetails/42865-Vista-Rdg-Parker-CO-80138/13524783_zpid/" class="zillow-link" target="_blank">View on Zillow</a>
+                    </td>
+                    <td><span class="pill pill-sold">Sold $885k</span></td>
+                    <td class="price-cell">$899,000</td>
+                    <td class="price-cell">$885,000</td>
+                    <td>4 / 3</td>
+                    <td>2,800</td>
+                    <td>1,724</td>
+                    <td>3.75</td>
+                    <td>33</td>
+                    <td style="font-size:10.5px;">Updated ranch, horse-ready, barn with water and electric, walkout basement with kitchenette. Reduced from $899k, 33 DOM. Well-finished throughout — the full updates drove it to $885k.</td>
+                </tr>
+                <tr class="sold-row">
+                    <td>
+                        2845 Cherry Way<br>
+                        <a href="https://www.zillow.com/homedetails/2845-Cherry-Way-Parker-CO-80138/13524777_zpid/" class="zillow-link" target="_blank">View on Zillow</a>
+                    </td>
+                    <td><span class="pill pill-sold">Sold $860k</span></td>
+                    <td class="price-cell">$899,000</td>
+                    <td class="price-cell">$860,000</td>
+                    <td>4 / 4</td>
+                    <td>3,731</td>
+                    <td>2,321</td>
+                    <td>3.49</td>
+                    <td>82</td>
+                    <td style="font-size:10.5px;">4 baths, large SF. Sat 82 days — overpriced at launch and needed time to find its buyer even at $860k. Larger footprint but the long DOM is a cautionary tale.</td>
+                </tr>
+                <tr class="sold-row">
+                    <td>
+                        2104 Helen Court<br>
+                        <a href="https://www.zillow.com/homedetails/2104-Helen-Ct-Parker-CO-80138/13525484_zpid/" class="zillow-link" target="_blank">View on Zillow</a>
+                    </td>
+                    <td><span class="pill pill-sold">Sold $838k</span></td>
+                    <td class="price-cell">$875,000</td>
+                    <td class="price-cell">$837,500</td>
+                    <td>4 / 3</td>
+                    <td>2,833</td>
+                    <td>2,113</td>
+                    <td>3.14</td>
+                    <td>21</td>
+                    <td style="font-size:10.5px;">Thunder Hill. Beautifully remodeled — granite, stainless, open concept, fenced pastures, barn. All above-grade SF. Closed in 21 days. The full remodel is what drove $838k. This is what updated looks like in this neighborhood.</td>
+                </tr>
+                <tr class="sold-row">
+                    <td>
+                        2127 Helen Court<br>
+                        <a href="https://www.zillow.com/homedetails/2127-Helen-Ct-Parker-CO-80138/13525483_zpid/" class="zillow-link" target="_blank">View on Zillow</a>
+                    </td>
+                    <td><span class="pill pill-sold">Sold $810k</span></td>
+                    <td class="price-cell">$850,000</td>
+                    <td class="price-cell">$810,000</td>
+                    <td>3 / 3</td>
+                    <td>2,004</td>
+                    <td>2,004</td>
+                    <td>3.67</td>
+                    <td>130</td>
+                    <td style="font-size:10.5px;">Thunder Hill. All above-grade, 3/3. Sat 130 days before closing at $810k. A cautionary tale on overpricing at launch — even a good property in this neighborhood bleeds days when the price is wrong.</td>
+                </tr>
+                <tr class="sold-row">
+                    <td>
+                        42146 Vista Ridge<br>
+                        <a href="https://www.zillow.com/homedetails/42146-Vista-Rdg-Parker-CO-80138/13524844_zpid/" class="zillow-link" target="_blank">View on Zillow</a>
+                    </td>
+                    <td><span class="pill pill-sold">Sold $765k</span></td>
+                    <td class="price-cell">$765,000</td>
+                    <td class="price-cell">$765,000</td>
+                    <td>5 / 4</td>
+                    <td>3,176</td>
+                    <td>1,591</td>
+                    <td>3.76</td>
+                    <td>4</td>
+                    <td style="font-size:10.5px;">5 beds, 4 baths and still only $765k — low above-grade SF (1,591) capped value despite bedroom count. Sold in 4 days. Clearly a tier below this property. Right pricing generates urgency.</td>
+                </tr>
+                <tr class="sold-row">
+                    <td>
+                        1280 Stockholm Way<br>
+                        <a href="https://www.zillow.com/homedetails/1280-Stockholm-Way-Parker-CO-80138/13524729_zpid/" class="zillow-link" target="_blank">View on Zillow</a>
+                    </td>
+                    <td><span class="pill pill-sold">Sold $735k</span></td>
+                    <td class="price-cell">$735,000</td>
+                    <td class="price-cell">$735,000</td>
+                    <td>3 / 3</td>
+                    <td>2,425</td>
+                    <td>1,465</td>
+                    <td>5.04</td>
+                    <td>61</td>
+                    <td style="font-size:10.5px;">Parker Hylands. 5+ acres but only 3/3. Sat 61 days. Large lot could not offset smaller bedroom and bath count. Clearly a tier below the subject property.</td>
+                </tr>
+                <tr class="sold-row">
+                    <td>
+                        2269 Eileen Way<br>
+                        <a href="https://www.zillow.com/homedetails/2269-Eileen-Way-Parker-CO-80138/" class="zillow-link" target="_blank">View on Zillow</a>
+                    </td>
+                    <td><span class="pill pill-sold">Sold $715k</span></td>
+                    <td class="price-cell">$715,000</td>
+                    <td class="price-cell">$715,000</td>
+                    <td>3 / 3</td>
+                    <td>2,213</td>
+                    <td>1,679</td>
+                    <td>3.15</td>
+                    <td>38</td>
+                    <td style="font-size:10.5px;">Thunder Hill. Completely remodeled, smaller 3/3. Represents the lower end of this neighborhood. Clearly a tier below the subject — but fully updated, which is what got it to $715k.</td>
+                </tr>
+                <tr class="sold-row">
+                    <td>
+                        723 Brussels Drive<br>
+                        <a href="https://www.zillow.com/homedetails/723-Brussels-Dr-Parker-CO-80138/13525670_zpid/" class="zillow-link" target="_blank">View on Zillow</a>
+                    </td>
+                    <td><span class="pill pill-sold">Sold $715k</span></td>
+                    <td class="price-cell">$715,000</td>
+                    <td class="price-cell">$715,000</td>
+                    <td>5 / 2</td>
+                    <td>3,554</td>
+                    <td>2,404</td>
+                    <td>5.11</td>
+                    <td>70</td>
+                    <td style="font-size:10.5px;">Only 2 baths on a 5-bed home dragged it to $715k despite large SF and 5+ acres. Sat 70 days. Bath count matters significantly at this price point.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="warn-box">
+            <h4>The Pattern Worth Noting</h4>
+            <p>The properties that moved quickly — 42226 Thunderhill (3 days), 42146 Vista Ridge (4 days), 2104 Helen Court (21 days) — were priced correctly from day one. The ones that sat — 2127 Helen Court (130 days), 1280 Stockholm Way (61 days), 723 Brussels Drive (70 days) — were overpriced at launch or had a specific deficiency buyers heavily discounted. <strong>Right pricing generates urgency. Wrong pricing generates silence, and eventually a lower sale price anyway.</strong></p>
+        </div>
+    </div>
+
+    <!-- Pre-list steps -->
+    <div class="section section-alt">
+        <div class="section-eyebrow">Before You List</div>
+        <h2>Recommended Steps to Maximize Your Position</h2>
+
+        <p class="prose">A targeted pre-list investment in presentation will meaningfully impact both sale price and days on market. Every item below is chosen because buyers in this price range will notice it. None of these require a full renovation — the goal is to present the home in a way that removes objections before buyers can form them.</p>
+
+        <div class="strategy-list">
+            <div class="strategy-item">
+                <div class="strategy-num">1</div>
+                <div class="strategy-content">
+                    <h4>Professional Photography — Lead With the Light and the Land</h4>
+                    <p>Natural light and acreage sell this property. Listing photos need to capture the vaulted great room, the skylights, the mountain views, and the land. Buyers in this price range make their showing list based on photography — this is not the place to cut corners.</p>
+                </div>
+            </div>
+            <div class="strategy-item">
+                <div class="strategy-num">2</div>
+                <div class="strategy-content">
+                    <h4>Staging — Cleanup, Declutter, and Repaint</h4>
+                    <p>No furniture rental is needed. This is about editing what you already have: remove most items from the walls so rooms breathe and read larger, declutter surfaces and closets, and repaint the entire interior in a consistent fresh neutral. A clean, unified palette creates the move-in-ready impression that buyers at this price point expect. This is one of the highest-return investments before listing.</p>
+                </div>
+            </div>
+            <div class="strategy-item">
+                <div class="strategy-num">3</div>
+                <div class="strategy-content">
+                    <h4>Refinish Kitchen Cabinetry</h4>
+                    <p>The kitchen is the room buyers spend the most time evaluating. Refinished cabinetry in a fresh, contemporary color combined with the existing granite will close a meaningful portion of the gap between this kitchen and the fully updated kitchens in competing listings. This is a fraction of the cost of full replacement and delivers strong visual impact in photos and in person.</p>
+                </div>
+            </div>
+            <div class="strategy-item">
+                <div class="strategy-num">4</div>
+                <div class="strategy-content">
+                    <h4>Granite Piece in the Primary Bath</h4>
+                    <p>Bathrooms are the second room buyers evaluate most critically. Adding a granite vanity top to the primary bath brings it in line with what competing properties offer at this price point and removes a visible objection during showings. Small investment, outsized effect on buyer perception.</p>
+                </div>
+            </div>
+            <div class="strategy-item">
+                <div class="strategy-num">5</div>
+                <div class="strategy-content">
+                    <h4>Deep Clean and Professional Carpet Cleaning</h4>
+                    <p>A full deep clean of the entire home combined with professional carpet cleaning is non-negotiable before listing in this price range. Clean homes show better, photograph better, and signal to buyers that the property has been well maintained. Buyers notice, and so do their agents.</p>
+                </div>
+            </div>
+            <div class="strategy-item">
+                <div class="strategy-num">6</div>
+                <div class="strategy-content">
+                    <h4>Price It Right the First Time</h4>
+                    <p>The data is clear: properties priced correctly in this neighborhood sell in under 30 days. Properties that are overpriced sit for 60 to 130 days, accumulate days-on-market stigma, and typically close below where a well-priced listing would have landed. In a market with active competition including a coming-soon at $924k, you want to be the compelling value — not the listing that buyers start wondering about.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Valuation -->
+    <div class="section">
+        <div class="section-eyebrow">Recommended Pricing Strategy</div>
+        <h2>Where Your Property Belongs in This Market</h2>
+
+        <p class="prose">Working through the comp set with your property's specific attributes — 4 beds, 3 baths, 3,294 total SF with 1,647 above grade, 3.37 acres, 2-stall barn, mountain views, kitchen and bathrooms at neighborhood average, north neighbor concern — here is how the pricing conversation lands.</p>
+
+        <p class="prose">The closest closed comps in overall character are the Thunder Hill neighborhood sales. Eileen Way ($715k, 3/3, fully remodeled) represents the floor for a smaller updated property — you are clearly above that. The 2104 Helen Court comp ($837.5k, 4/3, 21 days) is instructive but had meaningfully more above-grade SF and a full remodel. Your ceiling is defined by the Thunderhill Road neighbor at $849k, though that home had 800 more SF above grade, an extra bedroom and bath, and a substantially larger barn. If 1740 Territory Circle closes near its $924k ask, it validates the submarket and makes $815k look like an exceptional value for the buyer.</p>
+
+        <div class="val-box">
+            <div class="val-box-label">Recommended List Price Range</div>
+            <div class="val-tiers">
+                <div class="val-tier low">
+                    <div class="val-tier-label">Conservative Floor</div>
+                    <div class="val-tier-price">$775,000</div>
+                    <div class="val-tier-desc">Generates immediate activity. Positions as the clear value play versus the neighborhood.</div>
+                </div>
+                <div class="val-tier target">
+                    <div class="val-tier-label">Recommended List</div>
+                    <div class="val-tier-price">$815,000</div>
+                    <div class="val-tier-desc">Well-supported with pre-list updates complete. Strong opening position with room to negotiate toward a clean close.</div>
+                </div>
+                <div class="val-tier high">
+                    <div class="val-tier-label">Optimistic Ceiling</div>
+                    <div class="val-tier-price">$825,000</div>
+                    <div class="val-tier-desc">Achievable with strong presentation and the right buyer. Monitor days on market closely and adjust quickly if needed.</div>
+                </div>
+            </div>
+            <div class="val-note">The $815,000 recommendation is contingent on completing the pre-list items above — particularly the cabinetry refinish, primary bath granite, interior repaint, and staging cleanup. Without those updates, the supportable range shifts toward $775,000 to $790,000. Showing up to market in the strongest possible condition is what justifies the upper end of this range.</div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <h3>Let's Talk Through the Numbers</h3>
+        <p>This is a good property in a market that rewards honest pricing and strong presentation. The comps support a solid outcome, and the right buyer is out there for this specific combination of layout, light, acreage, and mountain views.</p>
+        <p>Call us when you are ready to walk through this in detail and build a plan together.</p>
+        <div class="footer-agents">
+            <div class="footer-agent">
+                <div class="footer-agent-role">The Freedle Team</div>
+                <div class="footer-agent-name">Scott Freedle</div>
+                <div class="footer-agent-contact">720-207-1318<br>scott@gofreedle.com<br>gofreedle.com</div>
+            </div>
+        </div>
+        <div class="footer-tagline">Freedle and Associates &nbsp;·&nbsp; gofreedle.com &nbsp;·&nbsp; Helping You Find Your Place.</div>
+    </div>
+
+</div>
+</body>
+</html>
